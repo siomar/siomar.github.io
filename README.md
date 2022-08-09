@@ -18,4 +18,4 @@ Para executar o projeto Vite de exemplo.
 
 ###  `yarn commit`
 
-Para executar commitizen
+Para executar commitizen e padronizar os commits
