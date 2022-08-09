@@ -1,0 +1,27 @@
+name: Deploy Portifolio Application
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build-and-deploy:
+    concurrency: ci-${{ github.ref }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3
+
+      - name: Install dependecies an build 🔧
+        env:
+          SECRET_VALUE: ${{ secrets.VITE_GITHUB_TOKEN }}
+        run: |
+          echo "Install dependecies"
+          yarn
+          echo "Build projects: $SECRET_VALUE"
+          VITE_GITHUB_TOKEN="$SECRET_VALUE" yarn build
+      
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist
+          branch: gh-pages
