@@ -5,7 +5,7 @@ class Api {
   private request(path: string, init: RequestInit): Promise<Response> {
     const headers = new Headers();
     headers.append("Authorization", `token ${this.TOKEN}`);
-    init.headers = headers;
+    // init.headers = headers;
 
     return fetch(`${this.URL}${path}`, init).then((resp) => resp.json());
   }
