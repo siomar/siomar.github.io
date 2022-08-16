@@ -3,7 +3,7 @@ import "./styles/style.css";
 import "./components/Header";
 import "./components/Icon";
 
-import Api from "./utils/api";
+import Api from "./services/api";
 import { create } from "./utils/create";
 
 interface IRepository {
